@@ -7,6 +7,7 @@ import cc from "./Images/cc.png";
 import tw from "./Images/tw.png";
 import medium from "./Images/medium.png";
 import link from "./Images/link.svg";
+import Footer from "./Footer";
 
 const App1 = () => {
   return (
@@ -50,10 +51,32 @@ const App1 = () => {
               <img src={link} alt=""></img>
             </div>
           </div>
+          <div className="repo">
+            <h1>Star Rating</h1>
+            <div className="userlink">
+              <img src={link} alt=""></img>
+            </div>
+          </div>
+          <div className="repo">
+            <h1>Star Rating</h1>
+            <div className="userlink">
+              <img src={link} alt=""></img>
+            </div>
+          </div>
+          <div className="repo">
+            <h1>Star Rating</h1>
+            <div className="userlink">
+              <img src={link} alt=""></img>
+            </div>
+          </div>
+          <div className="repo">
+            <h1>Star Rating</h1>
+            <div className="userlink">
+              <img src={link} alt=""></img>
+            </div>
+          </div>
         </div>
-        <div className="footer-final">
-          <p>Made with love by vignan</p>
-        </div>
+       <Footer/>
     </>
   );
 };
