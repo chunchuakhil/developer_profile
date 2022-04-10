@@ -1,9 +1,8 @@
 import user from "./Images/user.svg";
 import link from "./Images/link.svg";
 import React from "react";
-import developers from "./Developers_data";
 
-const Users = (users) => {
+const Users = ({developers}) => {
   const devs = developers.map((dev)=>{
     return (
     <div className="users" key={dev.id}>

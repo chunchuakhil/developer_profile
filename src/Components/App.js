@@ -1,13 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 import logo from "./Images/test.png";
 
 import Footer from "./Footer";
 import Search from "./Search";
 import Users from "./Users";
 import Developer from "./Developer";
-
+import data from "./Developers_data";
 
 function App() {
+  const [developers,setdevelopers] = useState(data);
+
+  const searchfn = (text)=>{
+    const filterData = data.filter((el)=>{
+      if(text===''){
+        return el;
+      }
+      else{
+        return el.name.toLowerCase().includes(text);
+      }
+    })
+    setdevelopers(filterData);
+  }
+
   return (
     <>
       <div className="container">
@@ -19,8 +33,8 @@ function App() {
         </div>
         <h3 className="title1">Explore developer profiles</h3>
         <div className="line"></div>
-        <Search />
-        <Users/>
+        <Search searchfn={searchfn}/>
+        <Users developers={developers}/>
         <div className="line"></div>
        <Developer/>
         <Footer />
