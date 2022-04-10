@@ -3,11 +3,11 @@ import link from "./Images/link.svg";
 import React from "react";
 
 const Users = ({developers}) => {
-  const devs = developers.map((dev)=>{
+  const devs = developers.map((dev,index)=>{
     return (
-    <div className="users" key={dev.id}>
+    <div className="users" key={index}>
             <img src={user} alt=""></img>
-            <h1>{dev.name}</h1>
+            <h1>{dev.github_link}</h1>
             <div className="userlink">
               <img src={link} alt=""></img>
             </div>

@@ -1,4 +1,4 @@
-import React,{useState,useContext} from "react";
+import React, { useState } from "react";
 import logo from "./Images/test.png";
 
 import Footer from "./Footer";
@@ -7,29 +7,25 @@ import Users from "./Users";
 import Developer from "./Developer";
 import data from "./Developers_data";
 
-
 export const DeveloperContext = React.createContext();
 
-
 function App() {
+  const [developers, setdevelopers] = useState(data);
 
-  const [developers,setdevelopers] = useState(data);
-
-  const searchfn = (text)=>{
-    const filterData = data.filter((el)=>{
-      if(text===''){
+  const searchfn = (text) => {
+    const filterData = data.filter((el) => {
+      if (text === "") {
         return el;
-      }
-      else{
+      } else {
         return el.name.toLowerCase().includes(text);
       }
-    })
+    });
     setdevelopers(filterData);
-  }
+  };
 
-  const addDeveloper = (details)=>{
-    console.log(details);
-  }
+  const addDeveloper = (details) => {
+    setdevelopers([...developers, details]);
+  };
 
   return (
     <DeveloperContext.Provider value={addDeveloper}>
@@ -42,13 +38,13 @@ function App() {
         </div>
         <h3 className="title1">Explore developer profiles</h3>
         <div className="line"></div>
-        <Search searchfn={searchfn}/>
-        <Users developers={developers}/>
+        <Search searchfn={searchfn} />
+        <Users developers={developers} />
         <div className="line"></div>
-       <Developer />
+        <Developer />
         <Footer />
       </div>
-      </DeveloperContext.Provider>
+    </DeveloperContext.Provider>
   );
 }
 
