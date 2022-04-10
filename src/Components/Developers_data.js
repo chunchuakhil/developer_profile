@@ -3,7 +3,13 @@
 const data = [
     {
         id:1,
-        name:"sai"
+        name:"sai",
+        github_link:"vignan83",
+        hackerrank_link:"vignan",
+        linked_link:"saivignan",
+        medium_link:"vignan",
+        twitter_link:"vignan83",
+        codechef_link:"vignan"
     },
     {
         id:2,

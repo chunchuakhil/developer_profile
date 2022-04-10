@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import logo from "./Images/test.png";
 
 import Footer from "./Footer";
@@ -7,7 +7,12 @@ import Users from "./Users";
 import Developer from "./Developer";
 import data from "./Developers_data";
 
+
+export const DeveloperContext = React.createContext();
+
+
 function App() {
+
   const [developers,setdevelopers] = useState(data);
 
   const searchfn = (text)=>{
@@ -22,8 +27,12 @@ function App() {
     setdevelopers(filterData);
   }
 
+  const addDeveloper = (details)=>{
+    console.log(details);
+  }
+
   return (
-    <>
+    <DeveloperContext.Provider value={addDeveloper}>
       <div className="container">
         <div className="main-dag">
           <h3 className="title">
@@ -36,10 +45,10 @@ function App() {
         <Search searchfn={searchfn}/>
         <Users developers={developers}/>
         <div className="line"></div>
-       <Developer/>
+       <Developer />
         <Footer />
       </div>
-    </>
+      </DeveloperContext.Provider>
   );
 }
 

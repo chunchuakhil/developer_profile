@@ -66,6 +66,28 @@ input[type=text] {
   border: none;
 }
 
+.formdata input{
+  border:1px solid black;
+}
+.formdata label{
+  margin-left:1rem;
+}
+
+.formdata .btns{
+  margin-top:20px;
+}
+
+#btn1{
+  color:white;
+  background-color: green;
+  padding:10px;
+}
+
+#btn2{
+  color:white;
+  background-color: red;
+  padding:10px 15px;
+}
 
 
 .searchIcon button{
@@ -90,16 +112,20 @@ input[type=text] {
 }
 
 .footer{
-  margin: 50px 37% 20px;
+  margin: 50px 30% 20px 35%;
 }
 
 .footer button{
   padding:20px;
   border-radius:10px;
-  margin-left:160px;
+  margin-left:200px;
   background-color:black;
   color:white;
   font-size:20px;
+}
+
+.footer h2{
+  margin-left:50px;
 }
 
 .footer-final {
