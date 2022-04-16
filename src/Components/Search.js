@@ -4,6 +4,9 @@ import search from "./Images/search.svg";
 const Search = ({ searchfn }) => {
   const [text, settext] = useState("");
   const filtertext = (e) => {
+    if (e.target.value === "") {
+      searchfn("");
+    }
     settext(e.target.value);
   };
   return (
@@ -20,7 +23,6 @@ const Search = ({ searchfn }) => {
         ></input>
         <div class="searchIcon" style={{ "margin-top": "25px" }}>
           <button onClick={() => searchfn(text)}>
-            {" "}
             <img src={search} style={{ width: "30px" }} alt=""></img>
           </button>
         </div>

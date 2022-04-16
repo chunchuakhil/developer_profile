@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import logo from "./Images/test.png";
-
 import Footer from "./Footer";
 import Search from "./Search";
 import Users from "./Users";
@@ -9,22 +8,28 @@ import data from "./Developers_data";
 
 export const DeveloperContext = React.createContext();
 
-function App() {
+function Home() {
   const [developers, setdevelopers] = useState(data);
 
   const searchfn = (text) => {
-    const filterData = data.filter((el) => {
-      if (text === "") {
-        return el;
-      } else {
-        return el.name.toLowerCase().includes(text);
-      }
-    });
-    setdevelopers(filterData);
+    console.log(text);
+    if (text !== "") {
+      const filterData = data.filter((el) => {
+        if (text === "") {
+          return el;
+        } else {
+          return el.github_link.toLowerCase().includes(text);
+        }
+      });
+      setdevelopers(filterData);
+    } else {
+      setdevelopers(data);
+    }
   };
 
   const addDeveloper = (details) => {
     setdevelopers([...developers, details]);
+    data.push(details);
   };
 
   return (
@@ -48,4 +53,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;

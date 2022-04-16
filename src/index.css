@@ -2,6 +2,11 @@ body{
   box-sizing: border-box;
   margin: 0;
   padding:0;
+  width:100%;
+}
+
+.container{
+  width:100%;
 }
 
 .main-dag{
@@ -15,7 +20,7 @@ body{
   margin:40px 0px;
 }
 
-.title{
+ .title{
   font-size: 50px;
   color:white;
   margin-top:200px;
@@ -38,15 +43,19 @@ body{
 .search,.users{
   background-color: #d0cde1;
   height: 80px;
-  width: 800px;
   border-radius: 10px;
   margin: 50px auto 50px;
   display:flex;
 }
 
-.users{
-  width:400px;
+.search{
+  margin-left:37%;
+  margin-right:35%;
 }
+
+ .users{
+  width:400px;
+} 
 
 .devgroup{
   display: grid;
@@ -95,6 +104,7 @@ input[type=text] {
   background-color: #d0cde1;
   width:35px;
   cursor: pointer;
+  padding-right:50px;
 }
 
 .users{
@@ -112,7 +122,7 @@ input[type=text] {
 }
 
 .footer{
-  margin: 50px 30% 20px 35%;
+  margin: 50px 30% 20px 30%;
 }
 
 .footer button{
@@ -181,4 +191,3 @@ input[type=text] {
   margin-right: 100px;
   border-bottom: 1px solid black;
 }
-
