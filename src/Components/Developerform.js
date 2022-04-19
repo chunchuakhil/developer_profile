@@ -28,6 +28,18 @@ const Developerform = ({ formdisplay }) => {
       twitter_link: twitter,
       codechef_link: codechef,
     };
+    fetch('/api/users/',{
+      method: 'POST',
+      headers:{'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        "github_id": github,
+        "linkedin_id": linkedIn,
+        "codechef_id": codechef,
+        "hackerrank_id": hackerrank,
+        "twitter_id": twitter,
+        "medium_id": medium
+      })
+    })
     addDeveloper(developer_details);
     setgithub("");
     sethackerrank("");
