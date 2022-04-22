@@ -10,7 +10,7 @@ const Displayrepos = ({ repodata }) => {
       <div className="repo" key={index}>
         <h1>{repo.name}</h1>
         <div className="userlink">
-          <img src={link} alt=""></img>
+          <a href={repo.url} target="_blank" rel="noreferrer"><img src={link} alt=""></img></a>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const users = require("./api/users");
+const developers = require("./api/developers");
 
 router.use(function timeLog(req, res, next) {
     console.log("Time:",Date.now());
@@ -9,7 +9,7 @@ router.use(function timeLog(req, res, next) {
 
 router.use(express.json());
 
-router.use("/users",users);
+router.use("/developers",developers);
 
 module.exports = router;
 

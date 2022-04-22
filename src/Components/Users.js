@@ -5,11 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 const Users = ({ developers }) => {
   const navigate = useNavigate();
- 
-  const devData = (link) => {
-    navigate("/App1", { state: { links:{link} } });
-  };
 
+  const devData = (link) => {
+    navigate("/App1", { state: { links: { link } } });
+  };
 
   const devs = developers.map((dev, index) => {
     return (
@@ -17,11 +16,9 @@ const Users = ({ developers }) => {
         <img src={user} alt=""></img>
         <h1>{dev.github_link}</h1>
         <div className="userlink">
-         
-            <span onClick={() => devData(dev)}>
+          <span onClick={() => devData(dev)}>
             <img src={link} alt=""></img>
-            </span>
-        
+          </span>
         </div>
       </div>
     );

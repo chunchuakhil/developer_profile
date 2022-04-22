@@ -28,7 +28,7 @@ const Developerform = ({ formdisplay }) => {
       twitter_link: twitter,
       codechef_link: codechef,
     };
-    fetch('/api/users/',{
+    fetch('/api/developers/',{
       method: 'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -57,31 +57,32 @@ const Developerform = ({ formdisplay }) => {
           value={github}
           onChange={(e) => setgithub(e.target.value)}
         ></input>
-        <label htmlFor="github">HackerRank</label>
+        <label htmlFor="HackerRank">HackerRank</label>
         <input
           type="text"
           value={hackerrank}
           onChange={(e) => sethackerrank(e.target.value)}
         ></input>
-        <label htmlFor="github">LinkedIn</label>
+        <label htmlFor="LinkedIn">LinkedIn</label>
         <input
           type="text"
           value={linkedIn}
           onChange={(e) => setlinkedIn(e.target.value)}
         ></input>
-        <label htmlFor="github">Medium</label>
+        
+        <label htmlFor="Medium">Medium</label>
         <input
           type="text"
           value={medium}
           onChange={(e) => setmedium(e.target.value)}
         ></input>
-        <label htmlFor="github">Twitter</label>
+        <label htmlFor="Twitter">Twitter</label>
         <input
           type="text"
           value={twitter}
           onChange={(e) => settwitter(e.target.value)}
         ></input>
-        <label htmlFor="github">Codechef</label>
+        <label htmlFor="Codechef">Codechef</label>
         <input
           type="text"
           value={codechef}

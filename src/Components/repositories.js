@@ -2,7 +2,7 @@ import React, { useEffect,useState } from "react";
 import Displayrepos from "./Displayrepos"
 
 const Repositories = ({ github }) => {
-  const url = `/api/users/${github}`;
+  const url = `/api/developers/${github}`;
   const [data,repodata] = useState([]);
   const finalData = [];
   useEffect(() => {
@@ -20,6 +20,7 @@ const Repositories = ({ github }) => {
                  });
                  repodata(finalData);
             });
+  
   },[]);
   
   return data && <Displayrepos repodata = {data}/>

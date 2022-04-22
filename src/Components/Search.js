@@ -21,7 +21,7 @@ const Search = ({ searchfn }) => {
             filtertext(e);
           }}
         ></input>
-        <div class="searchIcon" style={{ "margin-top": "25px" }}>
+        <div class="searchIcon" style={{ "margin-top": "17px" }}>
           <button onClick={() => searchfn(text)}>
             <img src={search} style={{ width: "30px" }} alt=""></img>
           </button>

@@ -6,16 +6,20 @@ import github from "./Images/github.png";
 import cc from "./Images/cc.png";
 import tw from "./Images/tw.png";
 import medium from "./Images/medium.png";
-import link from "./Images/link.svg";
-import { Link } from "react-router-dom";
+
 import Footer from "./Footer";
 import { useLocation } from "react-router-dom";
 import Repositories from "./Repositories";
-import axios from "axios";
+
 
 const App1 = () => {
   const location = useLocation();
   const userDetails = location.state.links.link;
+  const githubLink = userDetails.github_link;
+  const hackerrank_link = userDetails.hackerrank_link;
+  const linkedIn_link = userDetails.linked_link;
+  const medium_link = userDetails.medium_link;
+  const twitter_link = userDetails.twitter_link;
 
   return (
     <>
@@ -32,9 +36,9 @@ const App1 = () => {
             <h1>{userDetails.github_link}</h1>
             <h3>Software Engineer</h3>
             <div className="profiles">
-              <img src={hr} alt=""></img>
+              <a href={`https://github.com/${githubLink}`} target="_blank"><img src={github} alt=""></img></a>
               <img src={ln} alt=""></img>
-              <img src={github} alt=""></img>
+              <img src={hr} alt=""></img>
               <img src={cc} alt=""></img>
               <img src={medium} alt=""></img>
               <img src={tw} alt=""></img>
