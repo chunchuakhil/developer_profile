@@ -1,4 +1,4 @@
-import user from "./Images/user.svg";
+
 import link from "./Images/link.svg";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,13 +11,15 @@ const Users = ({ developers }) => {
   };
 
   const devs = developers.map((dev, index) => {
+    console.log(dev);
     return (
       <div className="users" key={index}>
-        <img src={user} alt=""></img>
-        <h1>{dev.github_link}</h1>
+        <img className="dev-image" src={dev.avatar_url} alt=""></img>
+        <h1>{dev.id}</h1>
         <div className="userlink">
+          
           <span onClick={() => devData(dev)}>
-            <img src={link} alt=""></img>
+            <img  src={link} alt=""></img>
           </span>
         </div>
       </div>

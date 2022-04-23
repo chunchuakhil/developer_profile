@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const developers = {
   "vignan83":{
-    login: 'Vignan83',
+    login: 'vignan83',
     avatar_url: 'https://avatars.githubusercontent.com/u/46327405?v=4',
     myName: 'Vignan',
     company: null,
@@ -240,31 +240,31 @@ router.get("/", (req, res) => {
       avatar_url: val.avatar_url,
     });
   });
-  res.send(developers);
+  res.send(arr);
 });
 
 //Individual user
 router.get("/:userId", (req, res) => {
   const data = developers[req.params.userId];
-  // const individualDev = {
-  //   id: data.login,
-  //   avatar_url: data.avatar_url,
-  //   name: data.name,
-  //   company: data.company,
-  //   blog: data.blog,
-  //   location: data.location,
-  //   email: data.email,
-  //   bio: data.bio,
-  //   github_id: data.github_id,
-  //   linkedin_id: data.linkedin_id,
-  //   codechef_id: data.codechef_id,
-  //   hackerrank_id: data.hackerrank_id,
-  //   twitter_id: data.twitter_id,
-  //   medium_id: data.medium_id,
-  //   repos: data.repos,
-  // };
+  const individualDev = {
+    id: data.login,
+    avatar_url: data.avatar_url,
+    name: data.name,
+    company: data.company,
+    blog: data.blog,
+    location: data.location,
+    email: data.email,
+    bio: data.bio,
+    github_id: data.github_id,
+    linkedin_id: data.linkedin_id,
+    codechef_id: data.codechef_id,
+    hackerrank_id: data.hackerrank_id,
+    twitter_id: data.twitter_id,
+    medium_id: data.medium_id,
+    repos: data.repos,
+  };
    
-  res.send(data);
+  res.send(individualDev);
 });
 
 router.post("/", (req, res) => {

@@ -48,6 +48,7 @@ const Developerform = ({ formdisplay }) => {
     setmedium("");
     settwitter("");
   };
+  
   return (
     <div className="formdata">
       <form onSubmit={submitHandler}>

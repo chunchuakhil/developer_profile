@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import logo from "./Images/test.png";
 import Footer from "./Footer";
 import Search from "./Search";
 import Users from "./Users";
 import Developer from "./Developer";
-import data from "./Developers_data";
+// import data from "./Developers_data";
 
 export const DeveloperContext = React.createContext();
 
+const data = [];
+
 function Home() {
   const [developers, setdevelopers] = useState(data);
+  
+
+  useEffect(() => {
+    fetch('/api/developers/').then(response => response.json())
+     .then(response =>
+       setdevelopers(response));
+ 
+    console.log(developers);
+},[]);
+
 
   const searchfn = (text) => {
-    console.log(text);
+   
     if (text !== "") {
       const filterData = data.filter((el) => {
         if (text === "") {
@@ -32,7 +44,7 @@ function Home() {
     data.push(details);
   };
 
-  return (
+  return(
     <DeveloperContext.Provider value={addDeveloper}>
       <div className="container">
         <div className="main-dag">
@@ -43,8 +55,10 @@ function Home() {
         </div>
         <h3 className="title1">Explore developer profiles</h3>
         <div className="line"></div>
+   
         <Search searchfn={searchfn} />
         <Users developers={developers} />
+
         <div className="line"></div>
         <Developer />
         <Footer />
@@ -52,5 +66,6 @@ function Home() {
     </DeveloperContext.Provider>
   );
 }
+
 
 export default Home;

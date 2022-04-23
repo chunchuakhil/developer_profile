@@ -191,6 +191,13 @@ body{
   color:dodgerblue;
 }
 
+.dev-image{
+  margin-top:10px;
+  width: 60px;
+  height:60px;
+  border-radius:50%;
+}
+
 .repo{
   background-color: white;
   display:flex;

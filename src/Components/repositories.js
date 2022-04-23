@@ -22,7 +22,6 @@ const Repositories = ({ github }) => {
             });
   
   },[]);
-  
   return data && <Displayrepos repodata = {data}/>
   
 };

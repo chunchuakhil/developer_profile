@@ -15,7 +15,8 @@ import Repositories from "./Repositories";
 const App1 = () => {
   const location = useLocation();
   const userDetails = location.state.links.link;
-  const githubLink = userDetails.github_link;
+  const githubLink = userDetails.id;
+  console.log(userDetails);
   const hackerrank_link = userDetails.hackerrank_link;
   const linkedIn_link = userDetails.linked_link;
   const medium_link = userDetails.medium_link;
@@ -50,7 +51,7 @@ const App1 = () => {
       <h1 style={{ textAlign: "center" }}>Github Repositories</h1>
 
       <div className="repos">
-        <Repositories github={userDetails.github_link} />
+        <Repositories github={userDetails.id} />
       </div>
       <Footer />
     </>
