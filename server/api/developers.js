@@ -8,7 +8,7 @@ const developers = {
     avatar_url: 'https://avatars.githubusercontent.com/u/46327405?v=4',
     myName: 'Vignan',
     company: null,
-    blog: 'https://www.linkedin.com/in/subham-mitra/',
+    blog: 'https://www.linkedin.com/in/saivignanreddy/',
     location: 'Hyderabad, India',
     email: null,
     bio: 'Software Developer',
