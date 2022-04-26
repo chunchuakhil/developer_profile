@@ -1,14 +1,11 @@
 import React, { useEffect,useState } from "react";
 import Displayrepos from "./Displayrepos"
 
-const Repositories = ({ github }) => {
-  const url = `/api/developers/${github}`;
+const Repositories = ({ repos }) => {
+ 
   const [data,repodata] = useState([]);
   const finalData = [];
   useEffect(() => {
-        fetch(url).then(response => response.json())
-        .then(response => response.repos)
-        .then(repos => {
                 repos.forEach((repo, index)=>{
                      finalData.push(
                          {
@@ -19,7 +16,7 @@ const Repositories = ({ github }) => {
                      );
                  });
                  repodata(finalData);
-            });
+           
   
   },[]);
   return data && <Displayrepos repodata = {data}/>

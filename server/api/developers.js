@@ -5,7 +5,7 @@ const axios = require("axios");
 const developers = {
   "vignan83":{
     login: 'vignan83',
-    avatar_url: 'https://avatars.githubusercontent.com/u/46327405?v=4',
+    avatar_url: 'https://avatars.githubusercontent.com/u/35171316?v=4',
     myName: 'Vignan',
     company: null,
     blog: 'https://www.linkedin.com/in/saivignanreddy/',
@@ -18,8 +18,7 @@ const developers = {
     hackerrank_id: 'vignan83',
     twitter_id: 'vignan83',
     medium_id: 'vignan83',
-    repos: [
-      
+    repos: [ 
       {
         name: 'Grocery Buddy',
         html_url: 'https://github.com/vignan83/grocery-buddy',

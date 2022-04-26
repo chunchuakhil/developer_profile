@@ -40,37 +40,55 @@ body{
 }
 
 
-.search,.users{
+.search{
   height: 80px;
   border-radius: 10px;
   margin: 50px auto 50px;
   display:flex;
 }
 
-.search{
-
-  margin-left:37%;
-  margin-right:35%;
+.users{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  row-gap: 100px;
 }
 
+
+.search{
+  background-color: #d0cde1;
+  height: 80px;
+  width: 600px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  display: flex;
+}
+
+.searchInput{
+  padding-left: 10px;
+  width: 500px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 15px 20px 10px 10px;
+  font-size: 24px;
+  border: none;
+}
  
 
 .devgroup{
   display: grid;
-  grid-template-columns: auto auto;
-  margin-left:300px;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  row-gap: 70px;
+  column-gap: 10px;
 }
 
 
-.search input[type=text] {
-  padding-left: 10px;
-  height: 50px;
-  border-radius: 10px;
-  margin: 15px 15px 10px 10px;
-  font-size: 24px;
-  border: 1px solid black;
-}
+
 
 .formdata{
   display:flex;
@@ -79,17 +97,21 @@ body{
 .formdata input{
   display:flex;
   height: 50px;
+  width:500px;
   border-radius: 10px;
-  margin: 15px 20px 10px 10px;
+  margin: 15px 20px 10px 100px;
   font-size: 24px;
   border:1px solid black;
 }
+
+
 .formdata label{
-  margin-left:1rem;
+  margin-left:100px;
 }
 
 .formdata .btns{
   margin-top:20px;
+  margin-left:40px;
 }
 
 #btn1{
@@ -106,11 +128,12 @@ body{
 
 
 .searchIcon button{
+  height: 50px;
+  width: 50px;
   cursor: pointer;
-  margin-bottom:10px;
-  padding:7px;
-  border-radius: 10px;
 }
+
+
 
 .users{
   background-color: white;
@@ -123,7 +146,7 @@ body{
 
 .userlink{
   margin-left:10px;
-  margin-top:25px;
+  margin-top:5px;
 }
 
 .footer{
@@ -150,6 +173,10 @@ body{
   text-align: center;
   height:50px;
   font-size:20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
 }
 
 .main-profile{

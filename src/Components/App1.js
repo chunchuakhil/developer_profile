@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import user from "./Images/user.svg";
 import hr from "./Images/hr.png";
 import ln from "./Images/ln.png";
@@ -14,13 +14,32 @@ import Repositories from "./Repositories";
 
 const App1 = () => {
   const location = useLocation();
-  const userDetails = location.state.links.link;
-  const githubLink = userDetails.id;
-  console.log(userDetails);
-  const hackerrank_link = userDetails.hackerrank_link;
-  const linkedIn_link = userDetails.linked_link;
-  const medium_link = userDetails.medium_link;
-  const twitter_link = userDetails.twitter_link;
+  const githubId = location.state.links.id;
+  const [linkedinId,setLinkedinId] = useState();
+  const [hackerrankId,setHackerrankId] = useState();
+  const [codeChefId,setCodeChefId] = useState();
+  const [mediumId,setMediumId] = useState();
+  const [twitterId,setTwitterId] = useState();
+  const [repos,setrepos] = useState();
+  const [Loading,setLoading] = useState(false);
+  console.log(Loading);
+  console.log("repos outside",repos);
+  useEffect(()=>{
+    fetch(`/api/developers/${githubId}`)
+      .then((response) => response.json())
+      .then((response) => {
+        setLinkedinId(response.linkedin_id);
+        setHackerrankId(response.hackerrank_id);
+        setCodeChefId(response.codechef_id);
+        setMediumId(response.medium_id);
+        setTwitterId(response.twitter_id);
+        setrepos( response.repos);
+      });
+  },[])
+
+ if(repos!==undefined && Loading===false){
+   setLoading(true);
+ }
 
   return (
     <>
@@ -34,25 +53,27 @@ const App1 = () => {
             <img src={user} width="300px" alt=""></img>
           </div>
           <div className="profile-info">
-            <h1>{userDetails.github_link}</h1>
+            <h1>{githubId}</h1>
             <h3>Software Engineer</h3>
             <div className="profiles">
-              <a href={`https://github.com/${githubLink}`} target="_blank"><img src={github} alt=""></img></a>
-              <img src={ln} alt=""></img>
-              <img src={hr} alt=""></img>
-              <img src={cc} alt=""></img>
-              <img src={medium} alt=""></img>
-              <img src={tw} alt=""></img>
+              <a href={`https://github.com/${githubId}`} target="_blank" rel="noreferrer"><img src={github} alt=""></img></a>
+              <a href={`https://www.linkedin.com/in/${linkedinId}`} target="_blank" rel="noreferrer"><img src={ln} alt=""></img></a>
+              <a href={`https://www.hackerrank.com/${hackerrankId}`} target="_blank" rel="noreferrer"><img src={hr} alt=""></img></a>
+              <a href={`https://www.codechef.com/users/${codeChefId}`} target="_blank" rel="noreferrer"><img src={cc} alt=""></img></a>
+              <a href={`https://medium.com/${mediumId}`} target="_blank" rel="noreferrer"><img src={medium} alt=""></img></a>
+              <a href={`https://twitter.com/${twitterId}`} target="_blank" rel="noreferrer"><img src={tw} alt=""></img></a>
             </div>
           </div>
         </div>
       </div>
 
       <h1 style={{ textAlign: "center" }}>Github Repositories</h1>
-
+      
+    { Loading &&
       <div className="repos">
-        <Repositories github={userDetails.id} />
-      </div>
+        <Repositories repos={repos} />
+      </div> 
+}
       <Footer />
     </>
   );
