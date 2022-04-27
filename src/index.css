@@ -28,7 +28,7 @@ body{
 }
 
 .title1{
-  font-size: 50px;
+  font-size: 45px;
   margin:40px 35%;
   /* width:100%; */
 }
@@ -133,7 +133,10 @@ body{
   cursor: pointer;
 }
 
-
+.avatar{
+  border-radius:50%;
+  width:300px;
+}
 
 .users{
   background-color: white;
@@ -147,6 +150,11 @@ body{
 .userlink{
   margin-left:10px;
   margin-top:5px;
+}
+
+.repolink{
+  margin-left:10px;
+  margin-top:28px;
 }
 
 .footer{

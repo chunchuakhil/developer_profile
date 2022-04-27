@@ -232,7 +232,6 @@ const developers = {
 
 router.get("/", (req, res) => {
   const arr = [];
-  console.log("users",developers);
   Object.entries(developers).forEach(([key, val]) => {
     arr.push({
       id: val.login,

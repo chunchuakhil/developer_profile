@@ -2,47 +2,47 @@ import React, { useEffect, useState } from "react";
 import logo from "./Images/test.png";
 import Footer from "./Footer";
 import Search from "./Search";
-import Users from "./Users";
+import Developers from "./Developers";
 import Developer from "./Developer";
 
 export const DeveloperContext = React.createContext();
 
 let developersData = [];
 
-function Home() {
+function HomePage() {
   const [developers, setdevelopers] = useState([]);
 
-  const fetchingDevelopers = () => {
 
+  const fetchingDevelopers = () => {
     fetch("/api/developers/")
       .then((response) => response.json())
       .then((response) => {
-       
+        console.log(response);
         setdevelopers(response);
         developersData = response;
       });
   };
 
 
-  const refreshFunction = ()=>{
-    window.location.reload(false);
-  }
+
 
   useEffect(() => {
     fetchingDevelopers();
   }, []);
 
-  const searchfn = (text) => {
 
-    if (text !== "") {
-      const filterData = developersData.filter((el) => {
-        if (text === "") {
-          return el;
+
+
+
+const searchfn = (inputText) => {
+    if (inputText !== "") {
+      const filterData = developersData.filter((dev) => {
+        if (inputText === "") {
+          return dev;
         } else {
-          return el.id.toLowerCase().includes(text);
+          return dev.id.toLowerCase().includes(inputText);
         }
       });
-
       setdevelopers(filterData);
     } else {
       setdevelopers(developersData);
@@ -50,9 +50,7 @@ function Home() {
   };
 
   const addDeveloper = () => {
-    //fetch the developers again
     fetchingDevelopers();
-    setTimeout(refreshFunction,1000);
   };
 
   return (
@@ -66,13 +64,11 @@ function Home() {
         </div>
         <h3 className="title1">Explore developer profiles</h3>
         <div className="line"></div>
-
         <Search searchfn={searchfn} />
-        <Users developers={developers} />
-
+        
+     <Developers developers={developers} />
         <div className="line"></div>
         <Developer />
-
         <br></br>
         <br></br>
         <br></br>
@@ -82,4 +78,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

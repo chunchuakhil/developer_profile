@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { DeveloperContext } from "./Home";
+import { DeveloperContext } from "./HomePage";
 
 
 
@@ -14,20 +14,15 @@ const Developerform = ({ formdisplay }) => {
   const [codechef, setcodechef] = useState("");
   const [twitter, settwitter] = useState("");
 
+
   const clickHandler = () => {
     formdisplay();
   };
+
+
   const submitHandler = (e) => {
     e.preventDefault();
     formdisplay();
-    const developer_details = {
-      github_link: github,
-      hackerrank_link: hackerrank,
-      linked_link: linkedIn,
-      medium_link: medium,
-      twitter_link: twitter,
-      codechef_link: codechef,
-    };
     fetch('/api/developers/',{
       method: 'POST',
       headers:{'Content-Type': 'application/json'},
@@ -40,13 +35,14 @@ const Developerform = ({ formdisplay }) => {
         "medium_id": medium
       })
     })
-    addDeveloper(developer_details);
+    addDeveloper();
     setgithub("");
     sethackerrank("");
     setcodechef("");
     setlinkedIn("");
     setmedium("");
     settwitter("");
+   
   };
   
   return (

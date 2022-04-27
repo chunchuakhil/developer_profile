@@ -2,12 +2,11 @@ import link from "./Images/link.svg";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Users = ({ developers }) => {
+const Developers = ({ developers }) => {
   const navigate = useNavigate();
 
   const devData = (id) => {
-    console.log("link",link);
-    navigate("/App1", { state: { links: { id } } });
+    navigate("/DevProfile", { state: { links: { id } } });
   };
 
   const devs = developers.map((dev, index) => {
@@ -17,7 +16,7 @@ const Users = ({ developers }) => {
         <h1>{dev.id}</h1>
         <div className="userlink">
           <span onClick={() => devData(dev.id)}>
-            <img src={link} alt=""></img>
+            <img src={link} alt="link"></img>
           </span>
         </div>
       </div>
@@ -26,4 +25,4 @@ const Users = ({ developers }) => {
   return <div className="devgroup">{devs}</div>;
 };
 
-export default Users;
+export default Developers;

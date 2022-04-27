@@ -12,7 +12,8 @@ const Search = ({ searchfn }) => {
   return (
     <>
       <div className="search">
-        <input className="searchInput"
+        <input
+          className="searchInput"
           type="text"
           id="search"
           value={text}
@@ -23,8 +24,7 @@ const Search = ({ searchfn }) => {
         ></input>
         <div class="searchIcon" style={{ "margin-top": "17px" }}>
           <button onClick={() => searchfn(text)}>
-         
-            <img src={search} style={{ width: "30px" }} alt=""></img>
+            <img src={search} style={{ width: "30px" }} alt="searchIcon"></img>
           </button>
         </div>
       </div>
