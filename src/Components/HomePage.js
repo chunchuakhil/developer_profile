@@ -17,6 +17,7 @@ function HomePage() {
     fetch("/api/developers/")
       .then((response) => response.json())
       .then((response) => {
+        console.log(response);
         setdevelopers(response);
         developersData = response;
       });
@@ -42,10 +43,11 @@ function HomePage() {
   };
 
   const addDeveloper = () => {
-   
-    setTimeout(() => {
+    //setloading(!loading);
+   setTimeout(() => {
+      console.log("inside settimeout");
       setloading(!loading);
-    }, 1000);
+    }, 1500);
   };
 
   return (
