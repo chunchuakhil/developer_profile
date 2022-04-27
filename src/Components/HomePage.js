@@ -11,7 +11,7 @@ let developersData = [];
 
 function HomePage() {
   const [developers, setdevelopers] = useState([]);
-  const [booleanVal, setBoolean] = useState(false);
+  const [loading, setloading] = useState(false);
 
   const fetchingDevelopers = () => {
     fetch("/api/developers/")
@@ -24,7 +24,7 @@ function HomePage() {
 
   useEffect(() => {
     fetchingDevelopers();
-  }, [booleanVal]);
+  }, [loading]);
 
   const searchfn = (inputText) => {
     if (inputText !== "") {
@@ -42,9 +42,10 @@ function HomePage() {
   };
 
   const addDeveloper = () => {
+   
     setTimeout(() => {
-      setBoolean(!booleanVal);
-    }, 800);
+      setloading(!loading);
+    }, 1000);
   };
 
   return (
