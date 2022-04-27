@@ -49,7 +49,7 @@ const DevProfile = () => {
         </div>
         <div className="main-profile">
           <div>
-            <img className="avatar" src={avatar}  alt=""></img>
+            <img className="avatar" src={avatar} width="300px" alt=""></img>
           </div>
           <div className="profile-info">
             <h1>{githubId}</h1>

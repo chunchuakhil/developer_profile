@@ -11,30 +11,22 @@ let developersData = [];
 
 function HomePage() {
   const [developers, setdevelopers] = useState([]);
-
+  const [booleanVal, setBoolean] = useState(false);
 
   const fetchingDevelopers = () => {
     fetch("/api/developers/")
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         setdevelopers(response);
         developersData = response;
       });
   };
 
-
-
-
   useEffect(() => {
     fetchingDevelopers();
-  }, []);
+  }, [booleanVal]);
 
-
-
-
-
-const searchfn = (inputText) => {
+  const searchfn = (inputText) => {
     if (inputText !== "") {
       const filterData = developersData.filter((dev) => {
         if (inputText === "") {
@@ -50,7 +42,9 @@ const searchfn = (inputText) => {
   };
 
   const addDeveloper = () => {
-    fetchingDevelopers();
+    setTimeout(() => {
+      setBoolean(!booleanVal);
+    }, 800);
   };
 
   return (
@@ -65,8 +59,8 @@ const searchfn = (inputText) => {
         <h3 className="title1">Explore developer profiles</h3>
         <div className="line"></div>
         <Search searchfn={searchfn} />
-        
-     <Developers developers={developers} />
+
+        <Developers developers={developers} />
         <div className="line"></div>
         <Developer />
         <br></br>
