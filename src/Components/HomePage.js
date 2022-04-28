@@ -1,70 +1,78 @@
-import React, { useEffect, useState } from "react";
-import logo from "./Images/test.png";
-import Footer from "./Footer";
-import Search from "./Search";
-import Developers from "./Developers";
-import Developer from "./Developer";
+import React, { useEffect, useState } from 'react';
+import logo from './Images/test.png';
+import Footer from './Footer';
+import Search from './Search';
+import Developers from './Developers';
+import Developer from './Developer';
+import { Loading, NotFound } from './common/common';
+import { fetchingDevelopersApi } from './../api/api';
 
 export const DeveloperContext = React.createContext();
 
-let developersData = [];
-
 function HomePage() {
   const [developers, setdevelopers] = useState([]);
-  const [loading, setloading] = useState(false);
+
+  const [filterdDevelopers, setFilterdDevelopers] = useState([]);
+
+  const [isSearching, setIsSearching] = useState(false);
+
+  const [loading, setloading] = useState(true);
+
+  const [count, setCount] = useState(0);
 
   const fetchingDevelopers = () => {
-    fetch("/api/developers/")
+    fetchingDevelopersApi()
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         setdevelopers(response);
-        developersData = response;
-      });
+        setloading(false);
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     fetchingDevelopers();
-  }, [loading]);
+  }, [count]);
 
   const searchfn = (inputText) => {
-    if (inputText !== "") {
-      const filterData = developersData.filter((dev) => {
-        if (inputText === "") {
-          return dev;
-        } else {
-          return dev.id.toLowerCase().includes(inputText);
-        }
-      });
-      setdevelopers(filterData);
-    } else {
-      setdevelopers(developersData);
+    if (inputText === '') {
+      setIsSearching(false);
+      return;
     }
+    const filterData = developers.filter((dev) => {
+      return dev.id.toLowerCase().includes(inputText);
+    });
+    setIsSearching(true);
+    setFilterdDevelopers(filterData);
   };
 
-  const addDeveloper = () => {
-    //setloading(!loading);
-   setTimeout(() => {
-      console.log("inside settimeout");
-      setloading(!loading);
-    }, 1500);
+  const DevelopersListView = () => {
+    if (isSearching && filterdDevelopers.length > 0) {
+      return <Developers developers={filterdDevelopers} />;
+    }
+    if (developers.length > 0) {
+      return <Developers developers={developers} />;
+    }
+    return <NotFound />;
   };
 
   return (
-    <DeveloperContext.Provider value={addDeveloper}>
-      <div className="container">
-        <div className="main-dag">
-          <h3 className="title">
+    <DeveloperContext.Provider value={{ count, setCount, setloading }}>
+      <div className='container'>
+        <div className='main-dag'>
+          <h3 className='title'>
             The Developer <br></br> Repository
           </h3>
-          <img src={logo} alt=""></img>
+          <img src={logo} alt=''></img>
         </div>
-        <h3 className="title1">Explore developer profiles</h3>
-        <div className="line"></div>
+        <h3 className='title1'>Explore developer profiles</h3>
+        <div className='line'></div>
+
         <Search searchfn={searchfn} />
 
-        <Developers developers={developers} />
-        <div className="line"></div>
+        {loading ? <Loading /> : <DevelopersListView />}
+
+        <div className='line'></div>
         <Developer />
         <br></br>
         <br></br>

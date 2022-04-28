@@ -1,95 +1,93 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import { DeveloperContext } from "./HomePage";
-
-
-
+import React, { useState } from 'react';
+import { useContext } from 'react';
+import { postDeveloperApi } from '../api/api';
+import { DeveloperContext } from './HomePage';
 
 const Developerform = ({ formdisplay }) => {
-  const addDeveloper = useContext(DeveloperContext);
-  const [github, setgithub] = useState("");
-  const [hackerrank, sethackerrank] = useState("");
-  const [linkedIn, setlinkedIn] = useState("");
-  const [medium, setmedium] = useState("");
-  const [codechef, setcodechef] = useState("");
-  const [twitter, settwitter] = useState("");
+  const { count, setCount, setloading } = useContext(DeveloperContext);
+  const [github, setgithub] = useState('');
+  const [hackerrank, sethackerrank] = useState('');
+  const [linkedIn, setlinkedIn] = useState('');
+  const [medium, setmedium] = useState('');
+  const [codechef, setcodechef] = useState('');
+  const [twitter, settwitter] = useState('');
 
-
-  const clickHandler = () => {
+  const exitFormHandler = () => {
     formdisplay();
   };
-
 
   const submitHandler = (e) => {
     e.preventDefault();
     formdisplay();
-    fetch('/api/developers/',{
+    setloading(true);
+
+    fetch('/api/developers/', {
       method: 'POST',
-      headers:{'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        "github_id": github,
-        "linkedin_id": linkedIn,
-        "codechef_id": codechef,
-        "hackerrank_id": hackerrank,
-        "twitter_id": twitter,
-        "medium_id": medium
-      })
+        github_id: github,
+        linkedin_id: linkedIn,
+        codechef_id: codechef,
+        hackerrank_id: hackerrank,
+        twitter_id: twitter,
+        medium_id: medium,
+      }),
     })
-    addDeveloper();
-    setgithub("");
-    sethackerrank("");
-    setcodechef("");
-    setlinkedIn("");
-    setmedium("");
-    settwitter("");
-   
+      .then((res) => {
+        if (res.status === 200) {
+          setCount(count + 1);
+        }
+      })
+      .catch((error) =>
+        console.log('error occured while adding developer', error)
+      );
   };
-  
+
   return (
-    <div className="formdata">
+    <div className='formdata'>
       <form onSubmit={submitHandler}>
-        <label htmlFor="github">Github</label>
+        <label htmlFor='github'>Github</label>
         <input
-          type="text"
+          type='text'
           value={github}
           onChange={(e) => setgithub(e.target.value)}
         ></input>
-        <label htmlFor="HackerRank">HackerRank</label>
+        <label htmlFor='HackerRank'>HackerRank</label>
         <input
-          type="text"
+          type='text'
           value={hackerrank}
           onChange={(e) => sethackerrank(e.target.value)}
         ></input>
-        <label htmlFor="LinkedIn">LinkedIn</label>
+        <label htmlFor='LinkedIn'>LinkedIn</label>
         <input
-          type="text"
+          type='text'
           value={linkedIn}
           onChange={(e) => setlinkedIn(e.target.value)}
         ></input>
-        
-        <label htmlFor="Medium">Medium</label>
+
+        <label htmlFor='Medium'>Medium</label>
         <input
-          type="text"
+          type='text'
           value={medium}
           onChange={(e) => setmedium(e.target.value)}
         ></input>
-        <label htmlFor="Twitter">Twitter</label>
+        <label htmlFor='Twitter'>Twitter</label>
         <input
-          type="text"
+          type='text'
           value={twitter}
           onChange={(e) => settwitter(e.target.value)}
         ></input>
-        <label htmlFor="Codechef">Codechef</label>
+        <label htmlFor='Codechef'>Codechef</label>
         <input
-          type="text"
+          type='text'
           value={codechef}
           onChange={(e) => setcodechef(e.target.value)}
         ></input>
-        <div className="btns">
-          <button id="btn2" onClick={clickHandler}>
+        <div className='btns'>
+          <button id='btn2' onClick={exitFormHandler}>
             Exit
           </button>
-          <button id="btn1" type="submit">
+          <button id='btn1' type='submit'>
             Submit
           </button>
         </div>
