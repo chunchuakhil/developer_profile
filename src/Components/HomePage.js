@@ -42,9 +42,7 @@ function HomePage() {
     }
   };
 
-
   return (
-
     <DeveloperContext.Provider value={setdeveloperCount}>
       <div className="container">
         <div className="main-dag">

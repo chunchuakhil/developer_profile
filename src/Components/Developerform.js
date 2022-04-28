@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { DeveloperContext } from "./HomePage";
 
-
-
-
 const Developerform = ({ formdisplay }) => {
   const setdeveloperCount = useContext(DeveloperContext);
   const [github, setgithub] = useState("");
@@ -14,32 +11,29 @@ const Developerform = ({ formdisplay }) => {
   const [codechef, setcodechef] = useState("");
   const [twitter, settwitter] = useState("");
 
-
   const clickHandler = () => {
     formdisplay();
   };
 
-
   const submitHandler = (e) => {
     e.preventDefault();
     formdisplay();
-    fetch('/api/developers/',{
-      method: 'POST',
-      headers:{'Content-Type': 'application/json'},
+    fetch("/api/developers/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        "github_id": github,
-        "linkedin_id": linkedIn,
-        "codechef_id": codechef,
-        "hackerrank_id": hackerrank,
-        "twitter_id": twitter,
-        "medium_id": medium
-      })
-    }).then(()=>{
-      setdeveloperCount(prev=>prev+1);
-    }
-    )
+        github_id: github,
+        linkedin_id: linkedIn,
+        codechef_id: codechef,
+        hackerrank_id: hackerrank,
+        twitter_id: twitter,
+        medium_id: medium,
+      }),
+    }).then(() => {
+      setdeveloperCount((prev) => prev + 1);
+    });
   };
-  
+
   return (
     <div className="formdata">
       <form onSubmit={submitHandler}>
@@ -61,7 +55,7 @@ const Developerform = ({ formdisplay }) => {
           value={linkedIn}
           onChange={(e) => setlinkedIn(e.target.value)}
         ></input>
-        
+
         <label htmlFor="Medium">Medium</label>
         <input
           type="text"
