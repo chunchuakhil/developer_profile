@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { postDeveloperApi } from '../api/api';
@@ -14,16 +15,21 @@ const Developerform = ({ formdisplay }) => {
 
   const exitFormHandler = () => {
     formdisplay();
+  }
+
+  const clickHandler = () => {
+    formdisplay();
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     formdisplay();
+
     setloading(true);
 
-    fetch('/api/developers/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("/api/developers/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         github_id: github,
         linkedin_id: linkedIn,
@@ -41,6 +47,7 @@ const Developerform = ({ formdisplay }) => {
       .catch((error) =>
         console.log('error occured while adding developer', error)
       );
+
   };
 
   return (
@@ -64,7 +71,6 @@ const Developerform = ({ formdisplay }) => {
           value={linkedIn}
           onChange={(e) => setlinkedIn(e.target.value)}
         ></input>
-
         <label htmlFor='Medium'>Medium</label>
         <input
           type='text'

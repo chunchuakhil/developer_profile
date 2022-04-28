@@ -20,6 +20,8 @@ function HomePage() {
 
   const [count, setCount] = useState(0);
 
+
+
   const fetchingDevelopers = () => {
     fetchingDevelopersApi()
       .then((response) => response.json())
@@ -34,6 +36,7 @@ function HomePage() {
     fetchingDevelopers();
   }, [count]);
 
+
   const searchfn = (inputText) => {
     if (inputText === '') {
       setIsSearching(false);
@@ -45,6 +48,7 @@ function HomePage() {
     setIsSearching(true);
     setFilterdDevelopers(filterData);
   };
+
 
   const DevelopersListView = () => {
     if (isSearching && filterdDevelopers.length > 0) {
