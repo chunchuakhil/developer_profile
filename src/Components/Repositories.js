@@ -3,6 +3,9 @@ import Displayrepos from "./Displayrepos";
 
 const Repositories = ({ repos }) => {
   const [data, repodata] = useState([]);
+ if(repos.length>29){
+   repos = repos.slice(0,repos.length);
+ }
   const finalData = [];
   useEffect(() => {
     repos.forEach((repo, index) => {

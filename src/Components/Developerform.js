@@ -6,7 +6,7 @@ import { DeveloperContext } from "./HomePage";
 
 
 const Developerform = ({ formdisplay }) => {
-  const addDeveloper = useContext(DeveloperContext);
+  const setdeveloperCount = useContext(DeveloperContext);
   const [github, setgithub] = useState("");
   const [hackerrank, sethackerrank] = useState("");
   const [linkedIn, setlinkedIn] = useState("");
@@ -34,15 +34,10 @@ const Developerform = ({ formdisplay }) => {
         "twitter_id": twitter,
         "medium_id": medium
       })
-    })
-    addDeveloper();
-    setgithub("");
-    sethackerrank("");
-    setcodechef("");
-    setlinkedIn("");
-    setmedium("");
-    settwitter("");
-   
+    }).then(()=>{
+      setdeveloperCount(prev=>prev+1);
+    }
+    )
   };
   
   return (

@@ -11,7 +11,7 @@ let developersData = [];
 
 function HomePage() {
   const [developers, setdevelopers] = useState([]);
-  const [loading, setloading] = useState(false);
+  const [developerCount, setdeveloperCount] = useState(2);
 
   const fetchingDevelopers = () => {
     fetch("/api/developers/")
@@ -25,7 +25,7 @@ function HomePage() {
 
   useEffect(() => {
     fetchingDevelopers();
-  }, [loading]);
+  }, [developerCount]);
 
   const searchfn = (inputText) => {
     if (inputText !== "") {
@@ -42,16 +42,10 @@ function HomePage() {
     }
   };
 
-  const addDeveloper = () => {
-    //setloading(!loading);
-   setTimeout(() => {
-      console.log("inside settimeout");
-      setloading(!loading);
-    }, 1500);
-  };
 
   return (
-    <DeveloperContext.Provider value={addDeveloper}>
+
+    <DeveloperContext.Provider value={setdeveloperCount}>
       <div className="container">
         <div className="main-dag">
           <h3 className="title">

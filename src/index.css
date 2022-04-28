@@ -181,7 +181,7 @@ body{
   text-align: center;
   height:50px;
   font-size:20px;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   width: 100%;
 
